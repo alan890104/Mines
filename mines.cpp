@@ -222,7 +222,7 @@ bool win_game(vector<vector<int> > &show , vector<vector<int> > &board,int n,int
     {
         for(int j=0;j<m;j++)
         {
-            if(board[i][j]!=-1 && !show[i][j]) return 0;
+            if(board[i][j]!=-1 && show[i][j]==0) return 0;
         }
     }
     return 1;
@@ -302,7 +302,7 @@ int main()
 {
 int type,n=0,m=0,mines=0,flags=0;
 SetColor();
-cout<<"Input type (1 or 2 or 3) : ";
+cout<<"Input type (1(is 9*9) or 2(is 16*16) or 3(is 30*16)) : ";
 cin>>type;
 selection(type,n,m,mines);
 flags = mines;
@@ -378,7 +378,6 @@ while(1)
         if(win_game(show,board,n,m))
         {
             stop = clock();
-            print(type,show,board);
             SetColor(14);
             cout<<"YOU WIN! in "<<double(stop - start) / CLOCKS_PER_SEC <<" seconds. "<<endl;
             break;
